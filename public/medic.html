@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Medic Queries</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+<script type="text/javascript" src="js/vendor/sheetjs.all.min.js"></script>
+<script type="text/javascript" src="js/vendor/excelplus-2.3.min.js"></script>
+
+<script src="https://www.parsecdn.com/js/parse-latest.js"></script>
+<link rel="stylesheet" href="https:////code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https:////code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="js/app.js"></script>
+
+
+<div class="content container">
+  <div>
+    <h2>Medic Activity Query</h2>
+
+    <div>
+      <form action="#">
+      <fieldset>
+        <div class="field-group clear row">
+          <label class="col-2" for="text-input">Start Date:</label>
+          <div class="col-3">
+            <input type="text" class="field" id="start-date-js" placeholder="Start Date">
+          </div>
+        </div>
+
+        <div class="field-group clear row">
+          <label class="col-2" for="text-input">End Date:</label>
+          <div class="col-3">
+            <input type="text" class="field" id="end-date-js" placeholder="Start Date">
+          </div>
+        </div>
+
+        <div class="field-group clear row">
+          <label class="col-2" for="select">Client</label>
+          <div class="col-3">
+            <select name="select" class="field" id="client-select-js">
+            </select>
+          </div>
+        </div>
+        <div class="field-group clear row">
+          <div class="col-2">
+          </div>
+            <div class="col-3">
+              <button class="button-link" id="run-query-js">Run Query</button>
+          </div>
+        </div>
+        
+      </fieldset>
+    </form>
+    </div>
+
+  </div>
+  
+</div>
+
+</body>
+</html>
