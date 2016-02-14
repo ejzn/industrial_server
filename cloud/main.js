@@ -13,7 +13,7 @@ Parse.Cloud.define("sendEquipmentRequest", function(request, response) {
             }
         }).then(function() {
 
-            Mailgun.initialize('sandboxe18e09b70b64409397d1dee349003f55.mailgun.org', 'key-aaabe5725bd2d9653db1ae11521a9169');
+            Mailgun.initialize('app.ipsems.com', 'aaabe5725bd2d9653db1ae11521a9169');
 
             Mailgun.sendEmail({
                     to: email,
@@ -51,7 +51,7 @@ Parse.Cloud.define("sendSignupNotification", function(request, response) {
             }
         }).then(function() {
 
-            Mailgun.initialize('sandboxe18e09b70b64409397d1dee349003f55.mailgun.org', 'key-aaabe5725bd2d9653db1ae11521a9169');
+            Mailgun.initialize('app.ipsems.com', 'aaabe5725bd2d9653db1ae11521a9169');
 
             Mailgun.sendEmail({
                     to: email,
@@ -90,13 +90,49 @@ Parse.Cloud.define("sendFieldOrder", function(request, response) {
             }
         }).then(function() {
 
-            Mailgun.initialize('sandboxe18e09b70b64409397d1dee349003f55.mailgun.org', 'key-aaabe5725bd2d9653db1ae11521a9169');
+            Mailgun.initialize('app.ipsems.com', 'aaabe5725bd2d9653db1ae11521a9169');
 
             Mailgun.sendEmail({
                     to: email,
                     from: "app@ipsems.com",
                     subject: "IPS Field Order Form",
                     text: "A new field order request is now available at the following URL: " + serverUrl
+            },{
+                success: function(httpResponse) {
+                    console.log(httpResponse);
+                    response.success("Email sent!");
+                },
+                error: function(httpResponse) {
+                    console.error(httpResponse);
+                    response.error("Uh oh, something went wrong");
+                }
+            });
+
+        }, function(error) {
+            response.error(error);
+        });
+
+});
+
+Parse.Cloud.define("sendBillingForm", function(request, response) {
+
+    var Mailgun = require('mailgun'),
+        email = request.params["email"],
+        serverUrl = request.params["serverFileUrl"] || "EMPTY";
+
+        Parse.Config.get().then(function(config) {
+            if(!config.get("production")) {
+                email = email + "," + "erikj54+billingfomr@gmail.com";
+            }
+        }).then(function() {
+
+            Mailgun.initialize('app.ipsems.com', 'aaabe5725bd2d9653db1ae11521a9169');
+
+            Mailgun.sendEmail({
+                    to: email,
+                    from: "app@ipsems.com",
+                    subject: "IPS Billing Form",
+                    text: "A new billing form is now available at the following URL: " + serverUrl
             },{
                 success: function(httpResponse) {
                     console.log(httpResponse);
